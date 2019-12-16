@@ -1,0 +1,61 @@
+  <ion-content>
+
+  <ion-card class="welcome-card">
+    <img src="/assets/HealthOrganizer.png" alt="" />
+  </ion-card>
+
+    <ion-list-header>
+      <ion-label>
+        <h1>My Healthcare Team</h1>
+       </ion-label>
+    </ion-list-header>
+
+  <h3 ion-text-center *ngIf="loadItems().length === 0"></h3>
+  <ion-list>
+    <ion-item-sliding *ngFor="let m of loadItems(); let i = index">
+      <ion-item>
+        <ion-label>
+          <h2>{{m.Name}}</h2>
+          <p>{{m.Address}}</p>
+          <p>{{m.City}}, {{m.State}}, {{m.Zip}}</p>
+          <p>{{m.Phone}}</p>
+          <p>{{m.url}}</p>
+          <ion-item>
+            <ion-label>Appointment Date:  {{MM}} {{DD}} {{YY}} {{H}}{{mm}}</ion-label>
+            <ion-datetime id="customDayShortNames" value="01-01-1970" min="2019" max="3000"
+             display-format="DDD. MMM DD YYYY H:mm" 
+             month-short-name="Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sept, Oct, Nov, Dec" 
+             placeholder="Select Date"></ion-datetime
+              >
+          </ion-item>          
+        </ion-label>
+      </ion-item>
+  
+      <ion-item-options side="end">
+
+          <ion-item-option (click)="editItem(m, i)" ion color="primary">
+            <ion-icon slot="icon-only" name="create"></ion-icon>
+            Edit
+          </ion-item-option>
+ 
+          <ion-item-option (click)="shareItem(m, i)" ion color="light">
+            <ion-icon slot="icon-only" name="share"></ion-icon>
+            Share
+        </ion-item-option>
+  
+          <ion-item-option (click)="removeItem(m, i)" ion color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+            Remove
+          </ion-item-option>
+
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

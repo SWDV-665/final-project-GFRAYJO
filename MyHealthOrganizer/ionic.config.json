@@ -1,0 +1,7 @@
+{
+  "name": "MyMedicalTracker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
